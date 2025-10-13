@@ -4,7 +4,7 @@ import Header from './components/Header';
 
 import './index.css'; // Ensure your CSS is imported
 import Hero from './components/Hero';
-import ImgSection from './components/ImgSection';
+
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
