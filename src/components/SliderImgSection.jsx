@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
 const sliderData = [
-  { title: "01 - Empowering Diversity and Inclusion", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/give-virtual-event-participants-more-than-hallway-conversations-copy-1.jpg" },
-  { title: "02-Building a Foundation for Positive Change", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/Screen-Shot-2023-07-26-at-10.34.18-AM.png" },
-  { title: "01 - Empowering Diversity and Inclusion", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/give-virtual-event-participants-more-than-hallway-conversations-copy-1.jpg" },
-  { title: "02-Building a Foundation for Positive Change", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/Screen-Shot-2023-07-26-at-10.34.18-AM.png" },
-  { title: "01 - Empowering Diversity and Inclusion", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/give-virtual-event-participants-more-than-hallway-conversations-copy-1.jpg" },
+  { title: "01 - Empowering Diversity and Inclusion",subTitle: "Masla’s Impactful Work with e180/Braindate", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/give-virtual-event-participants-more-than-hallway-conversations-copy-1.jpg" },
+  { title: "02-Building a Foundation for Positive Change",subTitle: "Masla’s Approach with The Unscented Company", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/Screen-Shot-2023-07-26-at-10.34.18-AM.png" },
+  { title: "01 - Empowering Diversity and Inclusion",subTitle: "Masla’s Impactful Work with e180/Braindate", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/give-virtual-event-participants-more-than-hallway-conversations-copy-1.jpg" },
+  { title: "02-Building a Foundation for Positive Change",subTitle: "Masla’s Approach with The Unscented Company" ,image: "https://maslaempathylab.com/wp-content/uploads/2023/02/Screen-Shot-2023-07-26-at-10.34.18-AM.png" },
+  { title: "01 - Empowering Diversity and Inclusion",subTitle: "Masla’s Impactful Work with e180/Braindate", image: "https://maslaempathylab.com/wp-content/uploads/2023/02/give-virtual-event-participants-more-than-hallway-conversations-copy-1.jpg" },
 ];
 
 const PausedMarqueeSlider = () => {
@@ -28,23 +28,38 @@ const PausedMarqueeSlider = () => {
    
     const slideWidthWithGap = slides[0].offsetWidth + 40; 
     
-    // 3. 🎯 অ্যানিমেশন টাইমলাইন সেট করা
+    
     tl.current = gsap.timeline({
-      repeat: -1, // নন-স্টপ লুপ
-      defaults: { ease: "power2.inOut", duration: 1.6 }, // প্রতিটি স্লাইডের অ্যানিমেশন স্পিড
+      repeat: -1, 
+      defaults: { ease: "power2.inOut", duration: 1.6 }, 
     });
 
-    // 4. 🎯 প্রতিটি ক্লোন স্লাইড জুড়ে টাইমলাইনে অ্যানিমেশন যোগ করা
+    
     const totalSlides = sliderData.length;
     
-    // টাইমলাইনটি শুরু হবে এবং প্রতিটি স্লাইডকে (আসল + ক্লোন) সরাবে। 
-    // আমরা শুধু আসল স্লাইডগুলির সংখ্যা অনুযায়ী লুপ চালাবো, কারণ ক্লোনগুলি এর সাথেই সরবে।
+    
     for (let i = 0; i < totalSlides; i++) {
         tl.current.to(slider, {
-            x: `-=${slideWidthWithGap}`, // এক স্লাইডের দূরত্ব বাম দিকে সরাও
-            delay: 0.6, // ⚠️ FIX: স্লাইড হবার পরে 0.2 সেকেন্ড থামার জন্য delay
-        });
+            x: `-=${slideWidthWithGap}`, 
+            delay: 0.6, 
+        })
+
+         .to(".slide-line", {
+        borderColor: "#111", // darkens
+        scaleX: 1.2, // slight stretch
+        transformOrigin: "left center",
+        duration: 0.3,
+        ease: "power1.out",
+      }, "<") // "<" = same time as slide movement
+      .to(".slide-line", {
+        borderColor: "#999", // returns to lighter
+        scaleX: 1,
+        duration: 0.4,
+        ease: "power1.in",
+      });
+  
     }
+    
 
    
     tl.current.to(slider, {
@@ -69,20 +84,30 @@ const PausedMarqueeSlider = () => {
       <div 
         ref={sliderRef} 
  
-        className="flex gap-10 justify-start transition-none"
+        className="flex  justify-start transition-none"
       >
         {sliderData.map((slide, index) => (
           <div
             key={`original-${index}`}
-            className="flex-shrink-0 w-[500px] h-[400px] bg-white  rounded-2xl flex flex-col items-center justify-center text-center p-8"
+            className="flex-shrink-0 w-[500px] h-[600px] bg-white  rounded-2xl flex flex-col items-center justify-center text-center p-8"
           >
-              <h2 className="text-2xl font-bold">{slide.title}</h2>
-            <img src={slide.image} alt={slide.title} className="h-40 mb-4 object-contain" />
-          
+              <h2 className="text-2xl font-bold mb-4">{slide.title}</h2>
+              <h3 className="text-sm mb-4">{slide.subTitle}</h3>
+            <hr className="my-4 border-t-1 border-gray-400 w-full" />
+           
+
+            <div className="flex gap-4"><img src={slide.image} alt={slide.title} className="h-60 mb-4 mt-4 object-contain" />
+           <hr className="my-4 border-r-1 border-gray-400 h-full" /></div>
+            {/* ক্লোন করা স্লাইডগুলি useEffect-এ যোগ করা হবে */}
+        
           </div>
         ))}
-        {/* ক্লোন করা স্লাইডগুলি useEffect-এ যোগ করা হবে */}
+       
       </div>
+     
+
+<hr className="my-4 w-full border-t-[3px] border-gray-800 " />
+
     </div>
   );
 };

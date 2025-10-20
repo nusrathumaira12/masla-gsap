@@ -7,6 +7,9 @@ import Hero from './components/Hero';
 import Masla from './components/Masla';
 import JediScrollSection from './components/JediScrollSection';
 import SliderImgSection from './components/SliderImgSection';
+import Text from './components/Text';
+import LogoMarquee from './components/LogoMarquee';
+import ReadySection from './components/ReadySection';
 
 
 function App() {
@@ -29,8 +32,9 @@ function App() {
       <JediScrollSection />
      
       <SliderImgSection></SliderImgSection>
-      {/* ⚠️ স্ক্রল শেষ করার জন্য জায়গা */}
-  
+      <Text></Text>
+  <LogoMarquee></LogoMarquee>
+  <ReadySection></ReadySection>
     
      
 
