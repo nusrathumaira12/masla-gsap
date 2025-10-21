@@ -10,6 +10,7 @@ import SliderImgSection from './components/SliderImgSection';
 import Text from './components/Text';
 import LogoMarquee from './components/LogoMarquee';
 import ReadySection from './components/ReadySection';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <Text></Text>
   <LogoMarquee></LogoMarquee>
   <ReadySection></ReadySection>
+  <Footer></Footer>
     
      
 

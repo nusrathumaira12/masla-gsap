@@ -59,7 +59,7 @@ const ReadySection = () => {
       {/* Left Text */}
       <div ref={textRef} className="flex-1 space-y-4">
         <h2 className="text-5xl font-bold text-gray-800">Ready to take a</h2>
-        <h3 className="text-6xl font-serif text-gray-900">Step Further?</h3>
+        <h3 className="text-7xl font-serif font-extrabold text-red-900">Step Further?</h3>
       </div>
 
      
@@ -68,7 +68,7 @@ const ReadySection = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
        
-        className="w-74 h-74 font-bold text-2xl cursor-pointer  text-center flex justify-center items-center"
+        className="w-74 h-74 font-bold text-5xl cursor-pointer  text-center flex justify-center items-center"
         style={{
            background: "rgb(210, 255, 200)",
             borderRadius: '50% 50% 50% 50% / 50% 50% 40% 50%', 
