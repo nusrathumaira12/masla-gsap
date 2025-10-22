@@ -51,7 +51,7 @@ const Footer = () => {
    </div>
       <img src="https://maslaempathylab.com/wp-content/uploads/2023/02/footer.png" 
       alt=""
-      className="w-full flex-col" />
+      className="w-full flex-col h-[80vh]" />
     </footer>
   );
 };

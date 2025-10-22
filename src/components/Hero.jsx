@@ -10,7 +10,7 @@ const Hero = () => {
     const imageRef = useRef(null);
 
   useEffect(() => {
-    // Initial moon setup
+   
     gsap.set(moonRef.current, {
       width: "950px",
       height: "70vh",
@@ -80,7 +80,7 @@ const Hero = () => {
 
         }, 0.3);
     } else {
-      // 🌓 Collapse back
+     
       gsap.timeline({ defaults: { duration: 1, ease: "power2.inOut" } })
         .to(textRef.current, {
            fontSize: "8.5rem",
@@ -101,6 +101,7 @@ const Hero = () => {
       clipPath: "ellipse(50% 80% at 50% 0%)", 
       borderRadius: "12px",
       position: "absolute",
+      
       top: "50%",
       left: "50%",
       xPercent: -50,
@@ -117,7 +118,7 @@ const Hero = () => {
   };
 
  useEffect(() => {
-  // Initial style
+ 
   gsap.set(imageRef.current, {
     width: "30%",  
     height: "30vh",  
@@ -126,7 +127,6 @@ const Hero = () => {
     transformOrigin: "center center",
   });
 
-  // Scroll-triggered animation
   gsap.to(imageRef.current, {
     width: "100%",  
     height: "80vh", 
@@ -153,7 +153,7 @@ const Hero = () => {
 <button
   onClick={handleToggle}
   className={`absolute z-10 text-lg font-bold text-white bg-blue-600 px-5 py-2 rounded -rotate-20 transition ${
-    expanded ? "top-5 right-5 -translate-x-0  -rotate-10" : "top-30 left-1/2 -translate-x-1/2"
+    expanded ? "top-10 right-5 -translate-x-0  -rotate-10" : "top-30 left-1/2 -translate-x-1/2"
   }`}
 >
   {expanded ? "EXIT" : "EXPAND +"}

@@ -32,7 +32,7 @@ useEffect(() => {
   .fromTo(
     textRef.current.querySelector("h3"),
     { y: 60, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1,delay: 0.6, ease: "power2.out" },
+    { y: 0, opacity: 1, duration: 1,delay: 0.2, ease: "power2.out" },
     "-=0.5" 
   );
 
@@ -68,7 +68,7 @@ useEffect(() => {
   return (
     <div className="w-[70%] h-[60vh] mt-2 flex items-center justify-center mx-auto md:px-20 py-10">
     
-      <div ref={textRef} className="flex-1 space-y-4">
+      <div ref={textRef} className="flex-1 space-y-7">
         <h2 className="text-5xl font-bold text-gray-800">Ready to take a</h2>
         <h3 className="text-7xl font-serif font-extrabold text-red-900">Step Further?</h3>
       </div>
