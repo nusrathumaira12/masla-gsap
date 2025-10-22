@@ -1,45 +1,55 @@
-// src/components/ReadySection.jsx
+
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 const ReadySection = () => {
   const textRef = useRef(null);
   const circleContainerRef = useRef(null); 
   const rotationTween = useRef(null); 
 
-  useEffect(() => {
-    gsap.fromTo(
-      textRef.current,
-      { y: 30, autoAlpha: 0 },
-      {
-        y: 0,
-        autoAlpha: 1,
-        ease: "power3.out",
-        duration: 1,
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
-        },
-      }
-    );
+useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
 
-   
-    rotationTween.current = gsap.to(circleContainerRef.current, { 
-        rotation: "+=360",
-        duration: .4,     
-        ease: "none",
-        paused: true,      
-              
-        transformOrigin: "center",
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: textRef.current,
+      start: "top 80%", 
+      end: "bottom 60%",
+      toggleActions: "play none none reset",
+    },
+  });
 
-    return () => {
-      rotationTween.current.kill();
-    };
-  }, []); 
+  
+  tl.fromTo(
+    textRef.current.querySelector("h2"),
+    { y: 60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out" } 
+  )
+  .fromTo(
+    textRef.current.querySelector("h3"),
+    { y: 60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+    "-=0.5" 
+  );
+
+ 
+  rotationTween.current = gsap.to(circleContainerRef.current, { 
+    rotation: "+=360",
+    duration: 0.5,
+    ease: "power1.inOut",
+    paused: true,
+    transformOrigin: "center",
+  });
+
+  return () => {
+    rotationTween.current.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
+}, []);
+
 
   
 
@@ -55,8 +65,8 @@ const ReadySection = () => {
   };
 
   return (
-    <div className="w-[70%] mt-2 flex items-center justify-center mx-auto md:px-20 py-10">
-      {/* Left Text */}
+    <div className="w-[70%] h-[60vh] mt-2 flex items-center justify-center mx-auto md:px-20 py-10">
+    
       <div ref={textRef} className="flex-1 space-y-4">
         <h2 className="text-5xl font-bold text-gray-800">Ready to take a</h2>
         <h3 className="text-7xl font-serif font-extrabold text-red-900">Step Further?</h3>
@@ -68,10 +78,10 @@ const ReadySection = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
        
-        className="w-74 h-74 font-bold text-5xl cursor-pointer  text-center flex justify-center items-center"
+        className="w-84 h-84 font-bold text-5xl cursor-pointer  text-center flex justify-center items-center"
         style={{
            background: "rgb(210, 255, 200)",
-            borderRadius: '50% 50% 50% 50% / 50% 50% 40% 50%', 
+            borderRadius: '50% 50% 50% 50% / 40% 50% 40% 50%', 
             transition: 'border-radius 0.7s ease-out' 
         }}
       >
