@@ -19,10 +19,10 @@ const Masla = () => {
     // Animate lines with stagger
     tl.to(linesRef.current, {
       y: -60,
-delay: 1,
-      duration: 1.2,
+delay: 0.6,
+      duration: 1,
       ease: "power3.out",
-      stagger: 0.5,  // each line comes one after another
+      stagger: 0.3,  // each line comes one after another
     });
   }, []);
 

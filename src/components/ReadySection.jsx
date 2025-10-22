@@ -18,6 +18,7 @@ useEffect(() => {
       trigger: textRef.current,
       start: "top 80%", 
       end: "bottom 60%",
+
       toggleActions: "play none none reset",
     },
   });
@@ -26,12 +27,12 @@ useEffect(() => {
   tl.fromTo(
     textRef.current.querySelector("h2"),
     { y: 60, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, ease: "power2.out" } 
+    { y: 0, opacity: 1, duration: 1,delay: 0.6, ease: "power2.out" } 
   )
   .fromTo(
     textRef.current.querySelector("h3"),
     { y: 60, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+    { y: 0, opacity: 1, duration: 1,delay: 0.6, ease: "power2.out" },
     "-=0.5" 
   );
 

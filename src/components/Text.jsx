@@ -6,28 +6,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Text = () => {
   const linesRef = useRef([]);
-
-  useEffect(() => {
+useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".masla-section", // whole section triggers animation
-        start: "top 80%",          // start when section top hits 80% of viewport
+        trigger: ".text-section", 
+        start: "top 80%", 
+        end: "bottom 90%" ,
+   
         toggleActions: "play none none none",
       },
     });
 
-    // Animate lines with stagger
-    tl.to(linesRef.current, {
-      y: -60,
-delay: 1,
-      duration: 1.2,
-      ease: "power3.out",
-      stagger: 0.5,  // each line comes one after another
-    });
+   
+   tl.to(linesRef.current, {
+  y: -60,
+ delay: 0.7,
+  duration: 1,
+  ease: "power3.out",
+  stagger: 0.3
+});
+
   }, []);
 
   return (
-    <section className="masla-section bg-white py-20 mt-10 text-black text-4xl md:text-7xl text-center w-[80%] mx-auto">
+    <section className="text-section bg-white py-20 mt-10 text-black text-4xl md:text-7xl text-center w-[80%] mx-auto">
       <h1>
         <div ref={(el) => (linesRef.current[0] = el)}>
           Masla Empathy Lab is a space where
